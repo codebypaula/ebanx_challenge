@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo da Conta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-size: 18px;
+        }
+
+        .account-list {
+            margin-top: 30px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Saldo da Conta</h1>
+        {% if account_name %}
+        <p>Conta: <strong>{{ account_name }}</strong></p>
+        <p>Saldo: <strong>R$ {{ balance }}</strong></p>
+        {% else %}
+        <p class="error">Erro: Nome da conta não informado corretamente.</p>
+        {% endif %}
+
+        <div class="account-list">
+            <h2>Outras Contas</h2>
+            <ul>
+                {% for account, balance in accounts.items() %}
+                <li><strong>{{ account }}</strong>: R$ {{ balance }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
